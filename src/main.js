@@ -3,6 +3,7 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 // 解决移动浏览器会有大约 300 毫秒的等待时间
 import Fastclick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
@@ -21,5 +22,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
