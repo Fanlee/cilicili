@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     _refresh() {
-      this._setSlideWidth(true)
+      this._setSliderWidth(true)
       this.slider.refresh()
     },
     _setSliderWidth(isResize) {
