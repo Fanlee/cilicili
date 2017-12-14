@@ -300,7 +300,6 @@ export default {
           this.currentLyric.play()
         }
       }).catch(() => {
-        console.log(1)
         this.currentLyric = null
         this.playingLyric = ''
         this.currentLineNum = 0
