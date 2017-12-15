@@ -4,12 +4,12 @@
       <search-box ref="searchBox" @query="onQueryChange"></search-box>
     </div>
     <div class="shortcut-wrapper" v-show="!query" ref="shortcutWrapper">
-      <scroll class="shortcut" :data="shortcut" ref="shortcut">
+      <scroll class="shortcut" :data="shortcut" :refreshDelay="refreshDelay" ref="shortcut">
         <div>
           <div class="hot-key">
             <h1 class="title">热门搜索</h1>
             <ul>
-              <li class="item" v-for="(item, index) of hotKey" @click="addQuery(item.k)" :key="index">
+              <li class="item" v-for="item of hotKey" @click="addQuery(item.k)">
                 <span>{{item.k}}</span>
               </li>
             </ul>
