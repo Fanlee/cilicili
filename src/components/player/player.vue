@@ -30,7 +30,7 @@
           <scroll class="middle-r" ref="lyricList" :data="currentLyric && currentLyric.lines">
             <div class="lyric-wrapper">
               <div v-if="currentLyric">
-                <p ref="lyricLine" class="text" :class="{'current': currentLineNum===index}" v-for="(line, index) of currentLyric.lines" :key="index">{{line.txt}}</p>
+                <p ref="lyricLine" class="text" :class="{'current': currentLineNum===index}" v-for="(line, index) of currentLyric.lines">{{line.txt}}</p>
               </div>
             </div>
           </scroll>
@@ -87,7 +87,7 @@
       </div>
       </transition>
       <playlist ref="playlist"></playlist>
-      <audio ref="audio" :src="currentSong.url" @canplay="ready" @error="error" @timeupdate="updateTime" @ended="end"></audio>
+      <audio ref="audio" :src="currentSong.url" @play="ready" @error="error" @timeupdate="updateTime" @ended="end"></audio>
     </div>
 </template>
 
@@ -394,7 +394,9 @@ export default {
       if (this.currentLyric) {
         this.currentLyric.stop()
       }
-      setTimeout(() => {
+
+      clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
         this.$refs.audio.play()
         this.getLyric()
       }, 1000)
